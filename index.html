@@ -4,18 +4,33 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>メインページ</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/script.js" defer></script>
 </head>
 
 <body>
-    <header style="border: 1px solid black">
-        <h1></h1>
+    <header>
+        <button type="button" class="hamburger-btn" id="hamburger-btn" aria-controls="nav-manu" aria-expanded="false">
+            <span class="hamburger-line"></span>
+        </button>
+
+        <nav class="nav-manu" id="nav-manu">
+            <ul>
+                <li><a href="#">トップ</a></li>
+                <li><a href="#">おすすめ</a></li>
+                <li><a href="#">ジャンル</a></li>
+                <li><a href="#">その他</a></li>
+            </ul>
+        </nav>
     </header>
 
-    <main style="border: 1px solid black; height: 100px; width: auto" >
-        <h1>メインページ</h1>
+    <main>
+        <div class="search">
+            <p>今のあなたにおすすめの一品をご紹介！</p>
+        </div>
     </main>
 
-    <footer style="border: 1px solid black">
+    <footer>
         <p></p>
     </footer>
 </body>

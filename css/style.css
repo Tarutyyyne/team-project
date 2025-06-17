@@ -1,3 +1,111 @@
-.header {
-    border: 1px solid black
+body {
+    background-color: #F5F5DC;
+    margin: 0;
+}
+
+/* 全ページ共通のheader, main, footerのスタイル */
+header{
+    background-color: yellow;
+    height: 100px;
+    width: auto;
+    border: 1px solid black;
+}
+
+main {
+    width: auto;
+    border: 1px solid black;
+}
+
+footer {
+    background-color: orange;
+    height: 20px;
+    width: auto;
+    border: 1px solid black;
+}
+
+
+/* ハンバーガーボタンの基本スタイル */
+.hamburger-btn {
+    position: fixed;
+    top: 15px;
+    right: 15px;
+    z-index: 100;
+    width: 50px;
+    height: 50px;
+    background: #333;
+    border: none;
+    cursor: pointer;
+}
+
+.hamburger-line {
+    position: absolute;
+    left: 15px;
+    right: 15px;
+    height: 2px;
+    background: #fff;
+    transition: background 0.3s
+}
+.hamburger-line::before,
+.hamburger-line::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: #fff;
+    transition: transform 0.3s, top 0.3s;
+}
+.hamburger-line::before {
+    top: -8px;
+}
+.hamburger-line::after {
+    top: 8px;
+}
+
+.nav-menu {
+    position: fixed;
+    top: 0;
+    right: 0px; /* 初期状態では画面外 */
+    width: 250px;
+    height: 100%;
+    background: #333;
+    transform: translateX(100%);
+    transition: transform 0.5s;
+    z-index: 99;
+}
+.nav-menu ul {
+    margin-top: 80px;
+    padding: 0;
+    list-style: none;
+}
+.nav-menu li a {
+    display: block;
+    padding: 15px 20px;
+    color: #fff;
+    text-emphasis: none;
+    transition: background 0.3s;
+}
+.nav-menu li a:hover {
+    background: #555;
+}
+
+/* .is-active クラスが付与された時のスタイル */
+
+/* ボタンを「×」印に変形 */
+
+.hamburger-btn.is-active .hamburger-line {
+    background: transparent;
+}
+.hamburger-btn.is-active .hamburger-line::before {
+    top: 0;
+    transform: rotate(45deg);
+}
+.hamburger-btn.is-active .hamburger-line::after {
+    top: 0;
+    transform: rotate(-45deg);
+}
+
+/* メニューを画面内に表示 */
+.nav-menu.is-active {
+    transform: translateX(0);
 }
