@@ -82,7 +82,7 @@ footer {
     display: block;
     padding: 15px 20px;
     color: #fff;
-    text-emphasis: none;
+    text-decoration: none;
     transition: background 0.3s;
 }
 .nav-menu li a:hover {
