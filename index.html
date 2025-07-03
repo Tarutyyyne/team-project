@@ -1,4 +1,216 @@
-<!DOCTYPE html>
+
+!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>赤メシ</title>
+  <style>
+    /* ===== 基本設定とカラーパレット ===== */
+    :root {
+      --main-color: #D32F2F;
+      --accent-color: #FFC107;
+      --base-color: #F5F5DC;
+      --content-bg-color: #FFFFF0;
+      --content-bg-alt-color: #FAFAFA;
+      --text-color: #212121;
+      --text-muted-color: #6c757d;
+      --favorite-color: #FF4081;
+    }
+    * { box-sizing: border-box; margin:0; padding:0; }
+    body {
+      font-family: 'Noto Sans JP', sans-serif;
+      background-color: var(--base-color);
+      color: var(--text-color);
+      margin: 0;
+      padding: 1rem 0;
+    }
+    h1, h2, h3, h4, .font-mplus { font-family: 'M PLUS Rounded 1c', sans-serif; }
+    .container {
+      width: 90%; max-width: 1200px; margin: 0 auto; padding: 0 1rem;
+    }
+    /* ヘッダー */
+    .main-header {
+      background-color: var(--main-color);
+      color: #fff;
+      padding: 1rem;
+      text-align: center;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    .main-header h1 { font-size: 1.5rem; font-weight: 800; }
+    /* 検索・タグ */
+    .search-filter-container { margin-bottom: 1.5rem; text-align: center; }
+    #search-box {
+      width: 100%; max-width: 400px;
+      padding: 0.75rem 1rem;
+      border: 2px solid #ddd;
+      border-radius: 9999px;
+      font-size: 1rem;
+      margin-bottom: 1rem;
+    }
+    #search-box:focus {
+      outline: none;
+      border-color: var(--accent-color);
+      box-shadow: 0 0 0 3px rgba(255,193,7,0.3);
+    }
+    #tag-container { display: flex; flex-wrap: wrap; gap: 0.5rem; justify-content: center; }
+    .tag-button {
+      display: inline-block;
+      padding: 0.5rem 1rem;
+      border-radius: 9999px;
+      background-color: #f0f0f0;
+      color: var(--text-color);
+      text-decoration: none;
+      font-size: 0.875rem;
+      transition: background-color 0.2s;
+    }
+    .tag-button.active {
+      background-color: var(--accent-color);
+      color: #fff;
+      font-weight: 700;
+    }
+    /* 店舗カード */
+    #restaurant-list { display: grid; grid-template-columns: 1fr; gap: 1.5rem; }
+    .restaurant-card {
+      display: block;
+      background-color: #fff;
+      border-radius: 0.5rem;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+      overflow: hidden;
+      text-decoration: none;
+      color: inherit;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .restaurant-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+    }
+    .restaurant-card img { width: 100%; height: 12rem; object-fit: cover; }
+    .card-content { padding: 1rem; }
+    .catchphrase {
+      display: inline-block;
+      background-color: var(--accent-color);
+      padding: 0.4rem 0.8rem;
+      border-radius: 4px;
+      font-weight: 800;
+      font-size: 1.1rem;
+      margin-bottom: 0.75rem;
+      box-shadow: 1px 1px 3px rgba(0,0,0,0.1);
+    }
+    .name { font-size: 1.25rem; font-weight: 700; margin: 0.5rem 0; }
+    .perks-container { display: flex; flex-wrap: wrap; gap: 0.5rem; margin: 0.75rem 0; }
+    .perk-badge {
+      background-color: var(--accent-color);
+      padding: 0.25rem 0.6rem;
+      border-radius: 9999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+    }
+    .info { display: flex; justify-content: space-between; align-items: center; margin-top: 1rem; color: var(--text-muted-color); }
+    .price { font-weight: 700; color: var(--main-color); }
+    /* フッター */
+    .site-footer { text-align: center; padding: 1rem 0; color: #fff; background-color: var(--main-color); }
+
+    /* PC対応 */
+    @media (min-width: 768px) {
+      #restaurant-list { grid-template-columns: repeat(2, 1fr); }
+    }
+  </style>
+</head>
+<body>
+  <!-- ヘッダー -->
+  <header class="main-header">
+    <h1 class="font-mplus">赤羽大学生ごはん</h1>
+  </header>
+  <main class="container">
+    <!-- 検索・タグ -->
+    <section class="search-filter-container">
+      <input type="search" id="search-box" placeholder="お店や料理名で検索…">
+      <div id="tag-container">
+        <a href="index.html" class="tag-button active">すべて</a>
+        <a href="shops/shop1.html" class="tag-button">麺大盛り無料</a>
+        <a href="shops/shop2.html" class="tag-button">学割あり</a>
+        <a href="shops/shop3.html" class="tag-button">コンセントあり</a>
+      </div>
+    </section>
+    <!-- 店舗一覧 -->
+    <div id="restaurant-list">
+      <a href="shops/shop1.html" class="restaurant-card">
+        <img src="images/shop1-1.jpg" alt="汁なし担々麺">
+        <div class="card-content">
+          <p class="catchphrase">“痺れる辛さが、やみつきになる。”</p>
+          <h3 class="name">自家製麺 ほうきぼし 赤羽駅前店</h3>
+          <div class="perks-container"><span class="perk-badge">麺大盛り無料</span></div>
+          <div class="info"><span class="price">880円</span><span>徒歩3分</span></div>
+        </div>
+      </a>
+      <a href="shops/shop2.html" class="restaurant-card">
+        <img src="images/shop2-1.jpg" alt="浜焼き">
+        <div class="card-content">
+          <p class="catchphrase">“仲間とワイワイ、磯の香り。”</p>
+          <h3 class="name">赤羽 トロ函</h3>
+          <div class="perks-container"><span class="perk-badge">学割あり</span></div>
+          <div class="info"><span class="price">600円</span><span>徒歩4分</span></div>
+        </div>
+      </a>
+      <a href="shops/shop3.html" class="restaurant-card">
+        <img src="images/shop3-1.jpg" alt="モーニングセット">
+        <div class="card-content">
+          <p class="catchphrase">“朝活の始まりは、ここから。”</p>
+          <h3 class="name">友路有（トゥモロー） 赤羽本店</h3>
+          <div class="perks-container"><span class="perk-badge">コンセントあり</span></div>
+          <div class="info"><span class="price">500円</span><span>徒歩2分</span></div>
+        </div>
+      </a>
+    </div>
+  </main>
+  <footer class="site-footer">
+    <p>&copy; 2025 赤羽大学生ごはん</p>
+  </footer>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const searchBox = document.getElementById('search-box');
+      const tagButtons = document.querySelectorAll('#tag-container .tag-button');
+      const cards = document.querySelectorAll('.restaurant-card');
+
+      searchBox.addEventListener('input', () => {
+        const term = searchBox.value.toLowerCase();
+        cards.forEach(card => {
+          const name = card.querySelector('.name').textContent.toLowerCase();
+          const catchphrase = card.querySelector('.catchphrase').textContent.toLowerCase();
+          card.style.display = (name.includes(term) || catchphrase.includes(term)) ? '' : 'none';
+        });
+      });
+
+      tagButtons.forEach(button => {
+        button.addEventListener('click', (e) => {
+          e.preventDefault();
+          tagButtons.forEach(b => b.classList.remove('active'));
+          button.classList.add('active');
+          const tag = button.textContent;
+          cards.forEach(card => {
+            if (tag === 'すべて') {
+              card.style.display = '';
+            } else {
+              const perks = Array.from(card.querySelectorAll('.perk-badge')).map(span => span.textContent);
+              card.style.display = perks.includes(tag) ? '' : 'none';
+            }
+          });
+        });
+      });
+    });
+  </script>
+</body>
+</html>
+
+
+
+
+
+<!-- <!DOCTYPE html>
 <html lang="ja">
 <head>
     <meta charset="UTF-8">
@@ -27,16 +239,23 @@
                 <li><a href="#">その他</a></li>
             </ul>
         </nav>
-    </header>
 
+    </header>
+    
     <main>
         <div class="search">
             <p>今のあなたにおすすめの一品をご紹介！</p>
+            <div style="width: auto; height: 50px; background-color: #D32F2F;"></div>
+            <div style="width: auto; height: 50px; background-color: #FFC107;"></div>
+            <div style="width: auto; height: 50px; background-color: #212121"> </div>
+            <div style="width: auto; height: 50px; background-color: #F5F5F5;"></div>
         </div>
     </main>
 
     <footer>
-        <p></p>
+        <div>
+            2025
+        </div>
     </footer>
 </body>
-</html>
+</html> -->
