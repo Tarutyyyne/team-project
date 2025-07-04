@@ -1,10 +1,13 @@
-
-!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>赤メシ</title>
+  
+  <!-- ▼ ファビコンを正しい <link> タグで挿入し、パスを修正 ▼ -->
+  <link rel="icon" href="images/akabanedaigakuseigohann31022.png" type="image/png">
+
   <style>
     /* ===== 基本設定とカラーパレット ===== */
     :root {
@@ -34,13 +37,26 @@
       background-color: var(--main-color);
       color: #fff;
       padding: 1rem;
-      text-align: center;
       position: sticky;
       top: 0;
       z-index: 10;
       box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
     }
-    .main-header h1 { font-size: 1.5rem; font-weight: 800; }
+    /* ロゴ画像のスタイル */
+    .header-logo {
+        height: 48px;
+        width: 48px;
+        border-radius: 8px;
+    }
+    .main-header h1 {
+        font-size: 1.5rem;
+        font-weight: 800;
+        margin: 0;
+    }
     /* 検索・タグ */
     .search-filter-container { margin-bottom: 1.5rem; text-align: center; }
     #search-box {
@@ -123,8 +139,11 @@
 <body>
   <!-- ヘッダー -->
   <header class="main-header">
-    <h1 class="font-mplus">赤羽大学生ごはん</h1>
+    <!-- ▼ ロゴ画像のパスを修正 ▼ -->
+    <img src="images/akabanedaigakuseigohann31022.png" alt="赤メシ ロゴ" class="header-logo">
+    <h1 class="font-mplus">赤メシ</h1>
   </header>
+
   <main class="container">
     <!-- 検索・タグ -->
     <section class="search-filter-container">
@@ -168,7 +187,7 @@
     </div>
   </main>
   <footer class="site-footer">
-    <p>&copy; 2025 赤羽大学生ごはん</p>
+    <p>&copy; 2025 赤メシ</p>
   </footer>
   <script>
     document.addEventListener('DOMContentLoaded', () => {
@@ -205,57 +224,3 @@
   </script>
 </body>
 </html>
-
-
-
-
-
-<!-- <!DOCTYPE html>
-<html lang="ja">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>メインページ</title>
-    <link rel="icon" type="image/png" sizes="16x16" href="images/team-practice-favicon-tmp-favicon.png">
-    <link rel="stylesheet" href="css/style.css">
-    <script src="js/script.js" defer></script>
-</head>
-
-<body>
-    <header>
-        <button type="button" class="hamburger-btn" id="hamburger-btn" aria-controls="nav-menu" aria-expanded="false">
-            <span class="hamburger-line"></span>
-        </button>
-
-        <div class="logo">
-            <a href="#"><img src="images/" alt="ロゴ"></a>
-        </div>
-
-        <nav class="nav-menu" id="nav-menu">
-            <ul>
-                <li><a href="#">トップ</a></li>
-                <li><a href="#">おすすめ</a></li>
-                <li><a href="#">ジャンル</a></li>
-                <li><a href="#">その他</a></li>
-            </ul>
-        </nav>
-
-    </header>
-    
-    <main>
-        <div class="search">
-            <p>今のあなたにおすすめの一品をご紹介！</p>
-            <div style="width: auto; height: 50px; background-color: #D32F2F;"></div>
-            <div style="width: auto; height: 50px; background-color: #FFC107;"></div>
-            <div style="width: auto; height: 50px; background-color: #212121"> </div>
-            <div style="width: auto; height: 50px; background-color: #F5F5F5;"></div>
-        </div>
-    </main>
-
-    <footer>
-        <div>
-            2025
-        </div>
-    </footer>
-</body>
-</html> -->
