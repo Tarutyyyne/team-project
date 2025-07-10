@@ -63,6 +63,34 @@ footer {
     background: #555;
 }
 
+header div > a {
+  color: white;
+  text-decoration: none; 
+  font-size: 1.4rem; 
+  font-weight: bold; 
+  transition: text-shadow 0.3s;
+}
+
+
+header div > a:hover {
+  text-shadow: 0 0 8px rgba(255, 255, 255, 0.7);
+}
+
+header nav a {
+  color: white;
+  text-decoration: none;
+  padding: 8px 12px;
+  border-radius: 4px;
+  font-size: 14px;
+  margin-left: 8px;
+  transition: background-color 0.2s; 
+}
+
+
+header nav a:hover {
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
 /* .is-active クラスが付与された時のスタイル */
 
 /* メニューを画面内に表示 */
