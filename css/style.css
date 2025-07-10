@@ -62,3 +62,16 @@ footer {
     height: 500px;
     object-fit: cover;
 }
+
+.fixed-top-left-image {
+    position: fixed; /* 画面に固定 */
+    z-index: 1000;   /* 他の要素より手前に表示 */
+    display: block;
+}
+
+.fixed-top-left-image img {
+    width: 80px; /* 画像の幅を指定 */
+    height: auto;  /* 高さは自動調整 */
+    border-radius: 8px;
+    display: block;
+}
