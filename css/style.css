@@ -5,15 +5,17 @@ body {
 
 /* 全ページ共通のheader, main, footerのスタイル */
 header{
-    background-color: yellow;
+    background-color: #D32F2F;
     height: 100px;
     width: auto;
-    border: 1px solid black;
 }
 
 main {
-    width: auto;
-    border: 1px solid black;  
+    width: auto; 
+}
+
+.content-block, .info-section{
+    margin: 0 15px 0 15px
 }
 
 footer {
