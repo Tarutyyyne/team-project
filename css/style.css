@@ -5,15 +5,28 @@ body {
 
 /* 全ページ共通のheader, main, footerのスタイル */
 header{
-    background-color: yellow;
-    height: 100px;
+    display: flex;        
+    align-items: center;  
+    gap: 16px; 
+    background-color: #D32F2F;
+    height: 80px;
     width: auto;
-    border: 1px solid black;
+    position: sticky; 
+    top: 0; 
+}
+
+header img {
+    width: 80px; /* 画像の幅を指定 */
+    height: auto;  /* 高さは自動調整 */
+    border-radius: 8px;
 }
 
 main {
-    width: auto;
-    border: 1px solid black;  
+    width: auto; 
+}
+
+.content-block, .info-section{
+    margin: 0 15px 0 15px
 }
 
 footer {
@@ -61,4 +74,14 @@ footer {
     width: 100%;
     height: 500px;
     object-fit: cover;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+#gallery,
+#reason,
+#info {
+  scroll-margin-top: 80px;
 }
