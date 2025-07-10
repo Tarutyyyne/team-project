@@ -286,6 +286,7 @@
           </div>
         </a>
       </div>
+<<<<<<< HEAD
     </main>
     <footer class="site-footer">
       <p>&copy; 2025 赤メシ</p>
@@ -297,6 +298,57 @@
           "#tag-container .tag-button"
         );
         const cards = document.querySelectorAll(".restaurant-card");
+=======
+    </section>
+    <!-- 店舗一覧 -->
+    <div id="restaurant-list">
+      <a href="./restaurants/restaurants1.html" class="restaurant-card">
+        <img src="images/博多ラーメン長浜や.jpg" alt="博多チャーシューラーメン">
+        <div class="card-content">
+          <p class="catchphrase">“あっさりとした、スープが旨い。”</p>
+          <h3 class="name">博多ラーメン長浜や</h3>
+          <div class="perks-container"><span class="perk-badge"></span></div>
+          <div class="info"><span class="price">880円</span><span>徒歩7分</span></div>
+        </div>
+      </a>
+      <a href="./restaurants/restaurants2.html" class="restaurant-card">
+        <img src="images/shop2-1.jpg" alt="浜焼き">
+        <div class="card-content">
+          <p class="catchphrase">“比内地鶏×高級煮干のWスープらーめん”</p>
+          <h3 class="name">自家製麺　伊藤　赤羽店</h3>
+          <div class="perks-container"><span class="perk-badge">学割なし</span></div>
+          <div class="info"><span class="price">990円</span><span>徒歩4分</span></div>
+        </div>
+      </a>
+      <a href="./restaurants/restaurants3.html" class="restaurant-card">
+        <img src="images/shop3-1.jpg" alt="モーニングセット">
+        <div class="card-content">
+          <p class="catchphrase">“朝活の始まりは、ここから。”</p>
+          <h3 class="name">レストラン３店名</h3>
+          <div class="perks-container"><span class="perk-badge">コンセントあり</span></div>
+          <div class="info"><span class="price">500円</span><span>徒歩2分</span></div>
+        </div>
+      </a>
+      <a href="./restaurants/restaurants4.html" class="restaurant-card">
+        <img src="images/川栄.jpg" alt="うな重">
+        <div class="card-content">
+          <p class="catchphrase">“秘伝のタレが決め手。”</p>
+          <h3 class="name">川栄</h3>
+          <div class="perks-container"><span class="perk-badge"></span></div>
+          <div class="info"><span class="price">3000円</span><span>徒歩6分</span></div>
+        </div>
+      </a>
+    </div>
+  </main>
+  <footer class="site-footer">
+    <p>&copy; 2025 赤メシ</p>
+  </footer>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const searchBox = document.getElementById('search-box');
+      const tagButtons = document.querySelectorAll('#tag-container .tag-button');
+      const cards = document.querySelectorAll('.restaurant-card');
+>>>>>>> 9c80427ab58c374a2cb4ad33e4a8525aaf22fe5d
 
         searchBox.addEventListener("input", () => {
           const term = searchBox.value.toLowerCase();
