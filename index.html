@@ -218,15 +218,19 @@
           placeholder="お店や料理名で検索…"
         />
         <div id="tag-container">
-          <a href="index.html" class="tag-button active">すべて</a>
-          <a href="shops/shop1.html" class="tag-button">麺大盛り無料</a>
-          <a href="shops/shop2.html" class="tag-button">学割あり</a>
-          <a href="shops/shop3.html" class="tag-button">コンセントあり</a>
+          <a href="#" class="tag-button active" data-tag="all">すべて</a>
+          <a href="#" class="tag-button" data-tag="ラーメン">ラーメン</a>
+          <a href="#" class="tag-button" data-tag="学生">学割あり</a>
+          <a href="#" class="tag-button" data-tag="1000円以内">1000円以内</a>
         </div>
       </section>
       <!-- 店舗一覧 -->
       <div id="restaurant-list">
-        <a href="./restaurants/restaurants1.html" class="restaurant-card">
+        <a
+          href="./restaurants/restaurants1.html"
+          class="restaurant-card"
+          data-tags="ラーメン, 1000円以内"
+        >
           <img
             src="images/博多ラーメン長浜や.jpg"
             alt="博多チャーシューラーメン"
@@ -240,7 +244,11 @@
             </div>
           </div>
         </a>
-        <a href="./restaurants/restaurants2.html" class="restaurant-card">
+        <a
+          href="./restaurants/restaurants2.html"
+          class="restaurant-card"
+          data-tags="ラーメン, 1000円以内"
+        >
           <img
             src="https://www.niboshi-ito.com/images/material/A-002.jpg"
             alt="浜焼き"
@@ -256,7 +264,11 @@
             </div>
           </div>
         </a>
-        <a href="./restaurants/restaurants3.html" class="restaurant-card">
+        <a
+          href="./restaurants/restaurants3.html"
+          class="restaurant-card"
+          data-tags="ラーメン,学生"
+        >
           <img src="images/mangetsu.jpg" alt="モーニングセット" />
           <div class="card-content">
             <p class="catchphrase">“白味噌スープの絡んだ自家製麺を贅沢に”</p>
@@ -269,7 +281,11 @@
             </div>
           </div>
         </a>
-        <a href="./restaurants/restaurants4.html" class="restaurant-card">
+        <a
+          href="./restaurants/restaurants4.html"
+          class="restaurant-card"
+          data-tags=""
+        >
           <img src="images/kawaei.jpg" alt="うな重" />
           <div class="card-content">
             <p class="catchphrase">“秘伝のタレが決め手。”</p>
@@ -280,7 +296,11 @@
             </div>
           </div>
         </a>
-        <a href="./restaurants/restaurants5.html" class="restaurant-card">
+        <a
+          href="./restaurants/restaurants5.html"
+          class="restaurant-card"
+          data-tags="1000円以内"
+        >
           <img src="images/kaisen_dondake.jpg" alt="マグロひっかき丼" />
           <div class="card-content">
             <p class="catchphrase">“絶品のマグロを駅チカで”</p>
@@ -291,7 +311,11 @@
             </div>
           </div>
         </a>
-        <a href="./restaurants/restaurants6.html" class="restaurant-card">
+        <a
+          href="./restaurants/restaurants6.html"
+          class="restaurant-card"
+          data-tags="ラーメン, 1000円以内"
+        >
           <img src="images/natumi.jpg" alt="煮干し豚骨ラーメン" />
           <div class="card-content">
             <p class="catchphrase">“煮干しと豚骨、奇跡のマリアージュ”</p>
@@ -302,7 +326,11 @@
             </div>
           </div>
         </a>
-        <a href="./restaurants/restaurants7.html" class="restaurant-card">
+        <a
+          href="./restaurants/restaurants7.html"
+          class="restaurant-card"
+          data-tags="ラーメン, 1000円以内"
+        >
           <img src="images/iki.jpg" alt="豚骨醤油ラーメン" />
           <div class="card-content">
             <p class="catchphrase">“甘み、とろみ。そしてまろみ──”</p>
@@ -313,8 +341,12 @@
             </div>
           </div>
         </a>
-        <a href="./restaurants/restaurants8.html" class="restaurant-card">
-          <img src="images/iki.jpg" alt="らーめん" />
+        <a
+          href="./restaurants/restaurants8.html"
+          class="restaurant-card"
+          data-tags="ラーメン, 1000円以内, 学生"
+        >
+          <img src="images/ginpuu.jpg" alt="らーめん" />
           <div class="card-content">
             <p class="catchphrase">“赤羽ラーメンの絶対王者”</p>
             <h3 class="name">吟風　赤羽店</h3>
@@ -338,35 +370,37 @@
           "#tag-container .tag-button"
         );
         const cards = document.querySelectorAll(".restaurant-card");
+        let selectedTag = "all";
 
-        searchBox.addEventListener("input", () => {
-          const term = searchBox.value.toLowerCase();
+        function filterCards() {
+          const term = searchBox.value.trim().toLowerCase();
+
           cards.forEach((card) => {
             const name = card.querySelector(".name").textContent.toLowerCase();
             const catchphrase = card
               .querySelector(".catchphrase")
               .textContent.toLowerCase();
-            card.style.display =
-              name.includes(term) || catchphrase.includes(term) ? "" : "none";
+            const matchSearch =
+              !term || name.includes(term) || catchphrase.includes(term);
+
+            // カードの data-tags を split→trim して配列化
+            const tags = card.dataset.tags.split(",").map((t) => t.trim());
+            const matchTag =
+              selectedTag === "all" || tags.includes(selectedTag);
+
+            card.style.display = matchSearch && matchTag ? "" : "none";
           });
-        });
+        }
+
+        searchBox.addEventListener("input", filterCards);
 
         tagButtons.forEach((button) => {
           button.addEventListener("click", (e) => {
             e.preventDefault();
             tagButtons.forEach((b) => b.classList.remove("active"));
             button.classList.add("active");
-            const tag = button.textContent;
-            cards.forEach((card) => {
-              if (tag === "すべて") {
-                card.style.display = "";
-              } else {
-                const perks = Array.from(
-                  card.querySelectorAll(".perk-badge")
-                ).map((span) => span.textContent);
-                card.style.display = perks.includes(tag) ? "" : "none";
-              }
-            });
+            selectedTag = button.dataset.tag; // data-tag を正しく参照
+            filterCards();
           });
         });
       });
