@@ -5,6 +5,180 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>海鮮食堂　丼だけ</title>
     <link rel="stylesheet" href="../css/style.css" />
+    <style>
+      :root {
+        --main-color: #d32f2f;
+        --accent-color: #ffc107;
+        --base-color: #f5f5dc;
+        --content-bg-color: #fffff0;
+        --content-bg-alt-color: #fafafa;
+        --text-color: #212121;
+        --text-muted-color: #6c757d;
+        --favorite-color: #ff4081;
+      }
+
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      body {
+        font-family: "Noto Sans JP", sans-serif;
+        background-color: var(--base-color);
+        color: var(--text-color);
+        line-height: 1.6;
+        padding: 1rem;
+      }
+
+      h1,
+      h2,
+      h3,
+      h4,
+      .font-mplus {
+        font-family: "M PLUS Rounded 1c", sans-serif;
+      }
+      h2 {
+        font-size: 1.5rem;
+        margin-bottom: 1rem;
+      }
+      h4 {
+        font-size: 1.125rem;
+        margin-bottom: 0.75rem;
+      }
+
+      header {
+        background-color: var(--main-color);
+        color: #fff;
+        position: sticky;
+        top: 0;
+        z-index: 10;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      }
+      header .fixed-top-left-image {
+        position: absolute;
+        top: 1rem;
+        left: 1rem;
+      }
+      header .fixed-top-left-image img {
+        width: 48px;
+        height: 48px;
+        border-radius: 8px;
+      }
+      header > div {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 1rem;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+      header nav a {
+        margin: 0 0.75rem;
+        color: inherit;
+        text-decoration: none;
+        padding-bottom: 0.25rem;
+        transition: border-bottom 0.2s;
+      }
+      header nav a:hover {
+        border-bottom: 2px solid var(--accent-color);
+      }
+
+      .gallery-container img {
+        width: 100%;
+        height: auto;
+        display: block;
+        border-radius: 0.5rem;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        margin-bottom: 1rem;
+      }
+
+      .content-block {
+        background-color: var(--content-bg-color);
+        padding: 1rem;
+        border-radius: 0.5rem;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        max-width: 1200px;
+        margin: 2rem auto;
+      }
+      .content-block p {
+        margin-top: 0.5rem;
+      }
+
+      .info-section {
+        background-color: var(--content-bg-alt-color);
+        padding: 1rem;
+        border-radius: 0.5rem;
+        max-width: 1200px;
+        margin: 2rem auto;
+      }
+      .info-section .perk-container span {
+        display: inline-block;
+        background-color: var(--accent-color);
+        color: #fff;
+        padding: 0.25rem 0.6rem;
+        border-radius: 9999px;
+        font-size: 0.75rem;
+        font-weight: 700;
+      }
+      .info-section span a img {
+        display: inline-block;
+        vertical-align: middle;
+        width: 30px;
+        height: auto;
+      }
+      .info-list {
+        list-style: none;
+      }
+      .info-list li {
+        display: flex;
+        justify-content: space-between;
+        padding: 0.5rem 0;
+        border-bottom: 1px solid #ddd;
+      }
+      .info-list li:last-child {
+        border-bottom: none;
+      }
+
+      .map-container iframe {
+        width: 100%;
+        height: 450px;
+        border: 0;
+        border-radius: 0.5rem;
+      }
+      .map-address {
+        margin-top: 0.5rem;
+        color: var(--text-muted-color);
+      }
+      .map-link-button {
+        display: inline-block;
+        background-color: var(--main-color);
+        color: #fff;
+        padding: 0.5rem 1rem;
+        border-radius: 0.5rem;
+        text-decoration: none;
+        transition: background-color 0.2s;
+        margin-top: 0.75rem;
+      }
+      .map-link-button:hover {
+        background-color: var(--accent-color);
+      }
+
+      footer {
+        background-color: var(--main-color);
+        color: #fff;
+        text-align: center;
+        padding: 1rem;
+      }
+
+      @media (min-width: 768px) {
+        main,
+        .gallery-container,
+        .content-block,
+        .info-section {
+          padding: 1.5rem;
+        }
+      }
+    </style>
   </head>
 
   <!-- 煌太の担当 -->

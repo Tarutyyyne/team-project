@@ -1,97 +1,287 @@
 <!DOCTYPE html>
 <html lang="ja">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>(お店の名前)</title>
-    <link rel="stylesheet" href="../css/style.css">
-</head>
-<body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>手打ちラーメン　満月</title>
+    <link rel="stylesheet" href="../css/style.css" />
+    <style>
+      :root {
+        --main-color: #d32f2f;
+        --accent-color: #ffc107;
+        --base-color: #f5f5dc;
+        --content-bg-color: #fffff0;
+        --content-bg-alt-color: #fafafa;
+        --text-color: #212121;
+        --text-muted-color: #6c757d;
+        --favorite-color: #ff4081;
+      }
+
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      body {
+        font-family: "Noto Sans JP", sans-serif;
+        background-color: var(--base-color);
+        color: var(--text-color);
+        line-height: 1.6;
+        padding: 1rem;
+      }
+
+      h1,
+      h2,
+      h3,
+      h4,
+      .font-mplus {
+        font-family: "M PLUS Rounded 1c", sans-serif;
+      }
+      h2 {
+        font-size: 1.5rem;
+        margin-bottom: 1rem;
+      }
+      h4 {
+        font-size: 1.125rem;
+        margin-bottom: 0.75rem;
+      }
+
+      header {
+        background-color: var(--main-color);
+        color: #fff;
+        position: sticky;
+        top: 0;
+        z-index: 10;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      }
+      header .fixed-top-left-image {
+        position: absolute;
+        top: 1rem;
+        left: 1rem;
+      }
+      header .fixed-top-left-image img {
+        width: 48px;
+        height: 48px;
+        border-radius: 8px;
+      }
+      header > div {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 1rem;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+      header nav a {
+        margin: 0 0.75rem;
+        color: inherit;
+        text-decoration: none;
+        padding-bottom: 0.25rem;
+        transition: border-bottom 0.2s;
+      }
+      header nav a:hover {
+        border-bottom: 2px solid var(--accent-color);
+      }
+
+      .gallery-container img {
+        width: 100%;
+        height: auto;
+        display: block;
+        border-radius: 0.5rem;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        margin-bottom: 1rem;
+      }
+
+      .content-block {
+        background-color: var(--content-bg-color);
+        padding: 1rem;
+        border-radius: 0.5rem;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        max-width: 1200px;
+        margin: 2rem auto;
+      }
+      .content-block p {
+        margin-top: 0.5rem;
+      }
+
+      .info-section {
+        background-color: var(--content-bg-alt-color);
+        padding: 1rem;
+        border-radius: 0.5rem;
+        max-width: 1200px;
+        margin: 2rem auto;
+      }
+      .info-section .perk-container span {
+        display: inline-block;
+        background-color: var(--accent-color);
+        color: #fff;
+        padding: 0.25rem 0.6rem;
+        border-radius: 9999px;
+        font-size: 0.75rem;
+        font-weight: 700;
+      }
+      .info-section span a img {
+        display: inline-block;
+        vertical-align: middle;
+        width: 30px;
+        height: auto;
+      }
+      .info-list {
+        list-style: none;
+      }
+      .info-list li {
+        display: flex;
+        justify-content: space-between;
+        padding: 0.5rem 0;
+        border-bottom: 1px solid #ddd;
+      }
+      .info-list li:last-child {
+        border-bottom: none;
+      }
+
+      .map-container iframe {
+        width: 100%;
+        height: 450px;
+        border: 0;
+        border-radius: 0.5rem;
+      }
+      .map-address {
+        margin-top: 0.5rem;
+        color: var(--text-muted-color);
+      }
+      .map-link-button {
+        display: inline-block;
+        background-color: var(--main-color);
+        color: #fff;
+        padding: 0.5rem 1rem;
+        border-radius: 0.5rem;
+        text-decoration: none;
+        transition: background-color 0.2s;
+        margin-top: 0.75rem;
+      }
+      .map-link-button:hover {
+        background-color: var(--accent-color);
+      }
+
+      footer {
+        background-color: var(--main-color);
+        color: #fff;
+        text-align: center;
+        padding: 1rem;
+      }
+
+      @media (min-width: 768px) {
+        main,
+        .gallery-container,
+        .content-block,
+        .info-section {
+          padding: 1.5rem;
+        }
+      }
+    </style>
+  </head>
+
+  <!-- 煌太の担当 -->
+  <body>
     <header>
-        <a href="../index.html" class="fixed-top-left-image">
-        <img src="../images/「赤メシ」の文字を使い、光の強さを最大限.png" alt="トップページへ戻る">
-        </a>
-        <div> 
-            <a href="お店のリンク">(店名)</a>  
-            <nav>
-                <a href="#recommendation">おすすめの一品</a>
-                <a href="#reason">おすすめのワケ</a>
-                <a href="#info">店舗情報</a>
-            </nav>  
-        </div>
-    </header> 
+      <a href="../index.html" class="fixed-top-left-image">
+        <img
+          src="../images/「赤メシ」の文字を使い、光の強さを最大限.png"
+          alt="トップページへ戻る"
+        />
+      </a>
+      <div>
+        <a href="https://www.bivio.jp/dondake">手打ちラーメン　満月</a>
+        <nav>
+          <a href="#recommendation">おすすめの一品</a>
+          <a href="#reason">おすすめのワケ</a>
+          <a href="#info">店舗情報</a>
+        </nav>
+      </div>
+    </header>
 
     <main>
-        <!-- 煌太の担当 -->
-        <div id="recommendation" class="gallery-container">
-            <img src="../images/20250529_201523.jpg" alt="お店の商品写真">
+      <div id="recommendation" class="gallery-container">
+        <img src="../images/natumi.jpg" alt="煮干し豚骨ラーメン" />
+      </div>
+      <div id="reason" class="content-block">
+        <h2>白味噌スープの絡んだ自家製麺を一日のご褒美に</h2>
+        <p></p>
+      </div>
+      <div id="info" class="info-section">
+        <h4>学生向け特典</h4>
+        <div class="perk-container">
+          <span>大盛り無料</span>
         </div>
-        <!-- 祐介の担当       -->
-        <div id="reason" class="content-block">
-            <h2>キャッチフレーズ</h2>
-            <p>説明文</p>
-        </div> 
-        <!-- 健斗の担当 -->
-        <div id="info" class="info-section">
-            <h4>学生向け特典</h4>
-            <div class="perk-container">
-                <span>（特典内容）</span>
-            </div>
-        </div>
-        <div class="info-section">
-            <h4>お店のタグ</h4>
-            <span>（タグを追加）</span>
-        </div>
-        <div class="info-section">
-            <h4>基本情報</h4>
-            <ul class="info-list">
-                <li>
-                    <strong>店名</strong>
-                    <span>（お店のなまえ）</span>
-                </li>
-                <li>
-                    <strong>おすすめ</strong>
-                    <span>（おすすめの料理）</span>
-                </li>
-                <li>
-                    <strong>営業時間</strong>
-                    <span>（なんじ～なんじ）</span>
-                </li>
-                <li>
-                    <strong>定休日</strong>
-                    <span>（いつやすむのか）</span>
-                </li>
-            </ul>
-        </div>
-        <div class="info-section">
-            <h4>HP・連絡先・SNS</h4>
-            <span>
-                <a href="">ホームページ</a>
-            </span>
-            <span>
-                電話
-            </span>
-            <span>
-                <a href="">インスタグラム</a>
-                <a href="">Twitter</a>
+      </div>
+      <div class="info-section">
+        <h4>お店のタグ</h4>
+        <span>＃ラーメン</span>
+      </div>
+      <div class="info-section">
+        <h4>基本情報</h4>
+        <ul class="info-list">
+          <li>
+            <strong>店名</strong>
+            <span>手打ちラーメン　満月</span>
+          </li>
+          <li>
+            <strong>おすすめ</strong>
+            <span>野菜白味噌ラーメン</span>
+          </li>
+          <li>
+            <strong>営業時間</strong>
+            <span>昼:11：30 ～14：30/夜:17：30 ～ 21：00</span>
+          </li>
+          <li>
+            <strong>定休日</strong>
+            <span>毎月ごとに変更</span>
+          </li>
+        </ul>
+      </div>
+      <div class="info-section">
+        <h4>HP・連絡先・SNS</h4>
+        <span>
+          <a
+            href="https://x.com/tanukimangetu"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <img
+              src="../images/Twitterのアイコン素材 2.png"
+              alt="Twitter"
+              style="width: 30px; height: auto"
+            />
+          </a>
+        </span>
 
-            </span>
+        <span> TELL 03-3900-5602</span>
+      </div>
+      <div class="info-section">
+        <h4>マップ</h4>
+        <div class="map-container">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3236.897036299327!2d139.71853389999995!3d35.77790549999999!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x601892fd7e3e4c1d%3A0xbcd1558b03f52494!2z5omL5omT44KJ44O844KB44KT5rqA5pyIIOi1pOe-vQ!5e0!3m2!1sja!2sjp!4v1752202572749!5m2!1sja!2sjp"
+            width="600"
+            height="450"
+            style="border: 0"
+            allowfullscreen=""
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+          ></iframe>
         </div>
-        <div class="info-section">
-            <h4>マップ</h4>
-            <div class="map-container">
-                <!-- #TODO iframeの使い方を調べる -->
-                <iframe src="" frameborder="0"></iframe>
-            </div>
-            <p class="map-address">(住所を入力)</p>
-            <a href="()" target="_blank" class="map-link-button">地図アプリで開く</a>
-        </div>
+        <p class="map-address">
+          〒115-0055 東京都北区赤羽西1-37-3赤羽アイエスビル1階
+        </p>
+        <a
+          href="https://maps.app.goo.gl/jEN41XYWPKafVdC46"
+          target="_blank"
+          class="map-link-button"
+          >地図アプリで開く</a
+        >
+      </div>
     </main>
 
-
-
-    <footer>
-
-    </footer>
-</body>
+    <footer></footer>
+  </body>
 </html>
